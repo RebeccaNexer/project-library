@@ -10,7 +10,13 @@
 </head>
 <body>
   <h1>Books to read 2023</h1>
-  <p>Sorted on year of release</p>
+  <label for="sortButton">Sort books:</label>
+  <select name="sort" id="sortButton">
+    <option value="all">All</option>
+    <option value="year">Year</option>
+    <option value="name">Name</option>
+  </select>
+
   <section id="myBooks">
   </section>
   <script src="script.js"></script>
