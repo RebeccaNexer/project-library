@@ -200,22 +200,8 @@ const loadBooks = (books) => {
         </div>`; 
     });
 };
-// window.onload = (function () {
-// books.sort(function(a, b){return a.year - b.year});
-// books.forEach(mybook => {
-// document.getElementById("myBooks").innerHTML += `
-//     <div class="card">
-//     <h2>${mybook.title}</h2>
-//     <h3>${mybook.author}</h3>
-//     <p>Genre: ${mybook.genre}. Year: ${mybook.year}. Rating: ${mybook.rating}</p>
-//     <img src=${mybook.image} alt="${mybook.title} width="100" height="120">
-//     <p>${mybook.description}</p>
-//     </div>`; 
-// });
-// });
 
-
- const filterBooks = () => {
+const sortBooks = () => {
 const value = sortButton.value;
 
  if (value === "all") {
@@ -231,6 +217,19 @@ const value = sortButton.value;
   }
  };
 
+ const filterBooks = () => {
+  const value = filterButton.value;
+  
+   if (value === "all") {
+      loadBooks(books);
+   }  else {
+        const filteredList = books.filter((book) => {
+          return book.genre === value;
+        });
+        loadBooks(filteredList);
+      }
+   };
+
 const addToFaves = (book) => {
   faveBooks.push(book)
   loadFaves()
@@ -243,7 +242,8 @@ const loadFaves = () => {
   });
  };
 
-sortButton.addEventListener("change", filterBooks);
-
+sortButton.addEventListener("change", sortBooks);
+filterButton.addEventListener("change", filterBooks);
 
 loadBooks(books);
+filterBooks(books);
