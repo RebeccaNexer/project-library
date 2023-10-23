@@ -206,9 +206,13 @@ const value = sortButton.value;
 
  if (value === "all") {
     loadBooks(books);
-  } else if (value === "year"){
+  } else if (value === "yearOld"){
     const yearList = books.sort(function(a, b){return a.year - b.year});
     loadBooks(yearList);  
+  } else if (value == "yearNew") {
+    const yearListNew = books.sort(function(a, b){
+      return b.year - a.year});
+    loadBooks(yearListNew);  
   } else if (value === "name") {
     const nameList = books.sort(function(a, b){return a.title > b.title ? 1 : -1});
     loadBooks(nameList);
